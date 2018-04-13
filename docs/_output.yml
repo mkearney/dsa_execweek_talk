@@ -1,0 +1,7 @@
+xaringan::moon_reader:
+  css: ['robot', 'robot-fonts']
+  self_contained: true
+  nature:
+    highlightStyle: github
+    highlightLines: true
+    countIncrementalSlides: false
