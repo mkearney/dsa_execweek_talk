@@ -6,7 +6,7 @@ date: "<table style=\"border-style:none;padding-top:30px;\" class=\".table\">\n<
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = TRUE, collapse = TRUE, comment = ">")
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, collapse = TRUE, comment = ">")
 options(htmltools.dir.version = FALSE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 library(tidyverse)
@@ -18,43 +18,32 @@ head <- function(x, n = 6) {
 }
 ```
 
+background-size: 150px auto
+background-position: 90px 185px, 167px 320px, 244px 185px, 321px 320px, 244px 455px, 167px 50px
+background-image: url(img/rtweet-logo.svg), url(img/hexagon-logo.png), url(img/textfeatures-logo.png), url(img/tfse-logo.png), url(img/botrnot-logo.png), url(img/chr-logo.png)
+class: right
 
-background-image: url(img/logo.svg)
-class: center, bottom
+<br \>
 
-View these slides at [mkearney.github.io/nicar_tworkshop](https://mkearney.github.io/nicar_tworkshop)
+<br \>
 
-Follow along with the companion [script.R](../script.R) file on Github ([github.com/mkearney/nicar_tworkshop](https://github.com/mkearney/nicar_tworkshop))
+<br \>
+
+
+### About Me
+
+\- PhD from University of Kansas
+
+\- Study politics and new media
+
+\- Author of several R packages
 
 ---
 class: center, middle
 
-
-<br \>
-
-<br \>
-
-<br \>
-
-<br \>
-
-
 # rtweet
 
 ### /ärtwēt/
-
-
-<br \>
-
-<br \>
-
-<br \>
-
-<br \>
-
-
-See **{rtweet}** in action, [tracking tweets about \#NICAR18](https://github.com/computer-assisted-reporting/NICAR18)
-
 
 ---
 
@@ -78,7 +67,7 @@ See **{rtweet}** in action, [tracking tweets about \#NICAR18](https://github.com
 
 - Github repo: [mkearney/rtweet](https://github.com/mkearney/rtweet)
 
-[![Generic badge](https://img.shields.io/badge/stars-209-blue.svg)](https://github.com/mkearney/rtweet/)[![Generic badge](https://img.shields.io/badge/forks-47-blue.svg)](https://github.com/mkearney/rtweet/)
+[![Generic badge](https://img.shields.io/badge/stars-2334blue.svg)](https://github.com/mkearney/rtweet/)[![Generic badge](https://img.shields.io/badge/forks-557blue.svg)](https://github.com/mkearney/rtweet/)
 
 ---
 
@@ -274,7 +263,7 @@ fds <- get_friends(c("hadleywickham", "NateSilver538", "Nate_Cohn"))
 fds
 ```
 
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 fds <- get_friends(c("hadleywickham", "NateSilver538", "Nate_Cohn"),
   verbose = FALSE)
 DT(fds)
@@ -371,7 +360,7 @@ table(rt$source)
 ```
 
 
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 ## search for english tweets sent via ifttt
 rt <- search_tweets("lang:en source:ifttt", verbose = FALSE)
 DT(tibble::as_tibble(sort(table(source = rt$source), decreasing = TRUE)[1:5]))
@@ -658,7 +647,7 @@ tt_tft <- tt %>%
 ```
 
 
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 tt_tft <- readRDS("data/tt_tft.rds")
 DT(tt_tft[, 1:5])
 ```
