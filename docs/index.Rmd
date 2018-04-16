@@ -39,6 +39,22 @@ class: right
 \- Author of several R packages
 
 ---
+
+# Outline
+
++ Twitter and the 2016 election
+   - Dissertation followed user networks of partisan groups
+   - Side effect of data collection: **{[rtweet](https://github.com/mkearney/rtweet)}**
+
++ Public concerns about big data and manipulative "bot" accounts
+   - What Cambridge Analytica represents
+   - "Fake news" and bots during the 2016 election
+
++ Detection of bots on Twitter
+   - How do we build a train/test data set
+
+
+---
 class: center, middle
 
 # rtweet
@@ -67,7 +83,7 @@ class: center, middle
 
 - Github repo: [mkearney/rtweet](https://github.com/mkearney/rtweet)
 
-[![Generic badge](https://img.shields.io/badge/stars-2334blue.svg)](https://github.com/mkearney/rtweet/)[![Generic badge](https://img.shields.io/badge/forks-557blue.svg)](https://github.com/mkearney/rtweet/)
+[![Generic badge](https://img.shields.io/badge/stars-234-blue.svg)](https://github.com/mkearney/rtweet/)[![Generic badge](https://img.shields.io/badge/forks-57-blue.svg)](https://github.com/mkearney/rtweet/)
 
 ---
 
