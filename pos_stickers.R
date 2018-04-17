@@ -6,6 +6,7 @@ names(x) <- c("x", "y")
 x$x <- x$x + 40
 x$y <- x$y + 35
 
-x$x <- x$x + 350
+x$x <- x$x + 400
 x <- apply(x, 1, function(x) paste(paste0(x, "px"), collapse = " "))
 pbcopy(paste(x, collapse = ", "))
+
