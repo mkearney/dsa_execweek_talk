@@ -1,0 +1,26 @@
+.remark-slide .title-slide {
+  background-image: url(img/mu_journ_logo.png), url(img/mu_dsa_logo.png);
+  background-position: 1% 99%, 99% 99%;
+  background-size: auto 100px, auto 100px;
+}
+.remark-slide .title-slide h3 {
+  background-color: transparent;
+}
+.title-slide h3,
+.remark-slide .title-slide h3 {
+  padding-top: 15px;
+}
+.title-slide h3:nth-of-type(2),
+.remark-slide .title-slide h3:nth-of-type(2) {
+  font-size: 1em;
+}
+.title-slide i.fa,
+.remark-slide .title-slide i.fa {
+  font-size: 2.5em;
+}
+.remark-slide-number {
+  font-size: 8pt;
+}
+.title-slide > div:nth-child(4) {
+  display: none;
+}

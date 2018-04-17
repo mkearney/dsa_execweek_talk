@@ -1,0 +1,40 @@
+```{r apis-setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, collapse = TRUE, comment = ">")
+```
+
+class: inverse, center, middle
+
+# Accessing web APIs
+
+---
+
+# Some background
+
+ **Application Program Interfaces** (APIs) are sets of protocols that govern interactions between sites and users.
+
+APIs are similar to web browsers but with different purpose:
+- Web browsers **render** content
+- Web APIs manage and organize **data**
+
+
+For public APIs, many sites only allow **authorized** users
+- Twitter, Facebook, Instagram, Github, etc.
+
+---
+
+# Twitter APIs
+
+To connect to Twitter's APIs, users need a **consumer key** and **consumer secret**, which you can get by creating a Twitter app.
+
+View the built-in vignette **`auth`** for instructions on obtaining and storing user access tokens.<sup>\* </sup>
+
+```{r}
+## view rtweet's authorization vignette
+vignette("auth", package = "rtweet")
+```
+
+Or look up the vignette online: [rtweet.info/articles/auth.html](http://rtweet.info/articles/auth.html)
+
+.footnote[
+<sup> \* </sup> For a while, rtweet users were not required to create their own Twitter applications. [That recently changed](https://github.com/mkearney/rtweet/issues/179#issuecomment-365689068), but hopefully it's resolved soon.
+]

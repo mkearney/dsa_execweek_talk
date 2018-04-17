@@ -1,8 +1,18 @@
 ---
-title: "R: Collecting and Analyzing Twitter Data"
-subtitle: "featuring {rtweet}"
-author: "Michael W. Kearney📊<br/>School of Journalism <br/>Informatics Institute <br/>University of Missouri"
-date: "<table style=\"border-style:none;padding-top:30px;\" class=\".table\">\n<tr>\n<th style=\"padding-right:75px!important\"><a href=\"https://twitter.com/kearneymw\"> <i class=\"fa fa-twitter\"></i> </a></th>\n<th style=\"padding-left:75px!important\"><a href=\"https://github.com/mkearney\"> <i class=\"fa fa-github\"></i> </a></th>\n</tr>\n<tr style=\"background-color:#fff\">\n<th style=\"padding-right:75px!important\"><a href=\"https://github.com/mkearney\"> @kearneymw </a></th>\n<th style=\"padding-left:75px!important\"><a href=\"https://github.com/mkearney\"> @mkearney </a></th>\n</tr></table>"
+title: "Political Information, New Media, and Twitter bots"
+author: |
+  Michael W. Kearney📊<br>
+  School of Journalism<br>
+  Informatics Institute<br>
+  University of Missouri
+date: |
+  <table style="border-style:none; padding: 0 0 50px 0; background-color:transparent" class="table"><tr>
+  <th style="padding:0 30px"><a href="https://twitter.com/kearneymw"><i class="fa fa-twitter"></i></a></th>
+  <th style="padding:0 30px"><a href="https://github.com/mkearney">  <i class="fa fa-github"> </i></a></th>
+  </tr><tr style="background-color:transparent">
+  <th style="padding:0 30px"><a href="https://twitter.com/kearneymw"> @kearneymw </a></th>
+  <th style="padding:0 30px"><a href="https://github.com/mkearney">   @mkearney  </a></th>
+  </tr></table>
 ---
 
 ```{r setup, include=FALSE}
@@ -19,132 +29,53 @@ head <- function(x, n = 6) {
 ```
 
 background-size: 150px auto
-background-position: 90px 185px, 167px 320px, 244px 185px, 321px 320px, 244px 455px, 167px 50px
-background-image: url(img/rtweet-logo.svg), url(img/hexagon-logo.png), url(img/textfeatures-logo.png), url(img/tfse-logo.png), url(img/botrnot-logo.png), url(img/chr-logo.png)
-class: right
+background-position: 440px 185px, 517px 320px, 594px 185px, 671px 320px, 594px 455px, 517px 50px
+background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/textfeatures-logo.png), url(img/tfse-logo.png), url(img/botrnot-logo.png), url(img/rtweet-logo.svg)
 
-<br \>
+# About Me
 
-<br \>
+**Education/position**
 
-<br \>
+- PhD from Kansas
+- Asst prof at Mizzou
 
+**Research interests**
 
-### About Me
+- Political information
+- New/social media
+- Importing/analyzing web data
 
-\- PhD from University of Kansas
+**\#rstats pkg author**
 
-\- Study politics and new media
-
-\- Author of several R packages
+- {rtweet}
+- {textfeatures}
+- {botrnot}
 
 ---
 
 # Outline
 
-+ Twitter and the 2016 election
-   - Dissertation followed user networks of partisan groups
-   - Side effect of data collection: **{[rtweet](https://github.com/mkearney/rtweet)}**
-
-+ Public concerns about big data and manipulative "bot" accounts
-   - What Cambridge Analytica represents
++ Public concern about automated and manipulative "bot" accounts
    - "Fake news" and bots during the 2016 election
+   - Bots create traffic/amplify social divisions
 
 + Detection of bots on Twitter
-   - How do we build a train/test data set
+   - Can we classify bots in real time to help people identify artificial accounts/trends?
+   - How do we build a train/test data set?
+
++ Future directions
+   - This all begs the question, what is a "Twitter bot"?
 
 
 ---
-class: center, middle
 
-# rtweet
-
-### /ärtwēt/
-
----
-
-# About {rtweet}
-
-- On the Comprehensive R Archive Network
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![CRAN status](https://www.r-pkg.org/badges/version/rtweet)](https://cran.r-project.org/package=rtweet)
-
-- Growing base of users
-
-![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/rtweet)[![Depsy](http://depsy.org/api/package/cran/rtweet/badge.svg)](http://depsy.org/package/r/rtweet)
-
-- Fairly stable
-
-[![Build Status](https://travis-ci.org/mkearney/rtweet.svg?branch=master)](https://travis-ci.org/mkearney/rtweet)[![Coverage Status](https://codecov.io/gh/mkearney/rtweet/branch/master/graph/badge.svg)](https://codecov.io/gh/mkearney/rtweet?branch=master)[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-
-- Package website: [rtweet.info](http://rtweet.info)
-
-[![Generic badge](https://img.shields.io/badge/website-up-green.svg)](http://rtweet.info/)
-
-- Github repo: [mkearney/rtweet](https://github.com/mkearney/rtweet)
-
-[![Generic badge](https://img.shields.io/badge/stars-234-blue.svg)](https://github.com/mkearney/rtweet/)[![Generic badge](https://img.shields.io/badge/forks-57-blue.svg)](https://github.com/mkearney/rtweet/)
-
----
-
-# Install
-
-- Install **{rtweet}** [CRAN](https://cran.r-project/package=rtweet).
-
-```{r tidy=FALSE}
-install.packages("rtweet")
+```{r rtweet-main, eval = TRUE, child = 'rtweet.Rmd'}
 ```
 
-- Or install the **development version** from [Github](https://github.com/mkearney/rtweet).
-
-```{r tidy=FALSE}
-devtools::install_github("mkearney/rtweet")
-```
-
-- Load **{rtweet}**
-
-```{r tidy=FALSE}
-library(rtweet)
-```
-
-
----
-class: inverse, center, middle
-
-# Accessing web APIs
-
 ---
 
-# Some background
-
- **Application Program Interfaces** (APIs) are sets of protocols that govern interactions between sites and users.
-
-APIs are similar to web browsers but with different purpose:
-- Web browsers **render** content
-- Web APIs manage and organize **data**
-
-
-For public APIs, many sites only allow **authorized** users
-- Twitter, Facebook, Instagram, Github, etc.
-
----
-
-# Twitter APIs
-
-To connect to Twitter's APIs, users need a **consumer key** and **consumer secret**, which you can get by creating a Twitter app. 
-
-View the built-in vignette **`auth`** for instructions on obtaining and storing user access tokens.<sup>\* </sup>
-
-```{r}
-## view rtweet's authorization vignette
-vignette("auth", package = "rtweet")
+```{r apis-main, eval = TRUE, child = 'apis.Rmd'}
 ```
-
-Or look up the vignette online: [rtweet.info/articles/auth.html](http://rtweet.info/articles/auth.html)
-
-.footnote[
-<sup> \* </sup> For a while, rtweet users were not required to create their own Twitter applications. [That recently changed](https://github.com/mkearney/rtweet/issues/179#issuecomment-365689068), but hopefully it's resolved soon.
-]
 
 ---
 class: inverse, center, middle
