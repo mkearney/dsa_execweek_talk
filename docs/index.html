@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 # Political Information, New Media, and Twitter bots
-### <p>Michael W. Kearney📊<br> School of Journalism<br> Informatics Institute<br> University of Missouri</p>
+### Michael W. Kearney📊<br> School of Journalism<br> Informatics Institute<br> University of Missouri
 ### <table style="border-style:none; padding: 0 0 50px 0; background-color:transparent" class="table">
 <tr>
 <th style="padding:0 30px">
@@ -42,7 +42,7 @@ class: center, middle
 
 Presentation created using **{xaringan}** (the **robot** theme)
 
-Slides available at [mkearney.github.io/dsa_execweek_talk/index.html](https://mkearney.github.io/dsa_execweek_talk/index.html)
+Slides available at [mkearney.github.io/dsa_execweek_talk/](https://mkearney.github.io/dsa_execweek_talk/)
 
 ---
 
@@ -75,17 +75,16 @@ background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/text
 
 ---
 
-# Ouverview
-+ Public concern about automated and manipulative "bot" accounts
-   - "Fake news" and bots during the 2016 election
-   - Bots create traffic/amplify social divisions
+# Overview
++ Background on the problem and the research question
+   - Use of bots on social media to manipulate public opinions, amplify social divisions, and spread "fake news"
+   - How do we accurately and dynamically classify bots on social media?
 
-+ Detection of bots on Twitter
-   - Can we classify bots in real time to help people identify artificial accounts/trends?
-   - How do we build a train/test data set?
++ Proposed solution
+   - A new, fast, and flexible approach to training models to detect social media bots
 
 + Future directions
-   - This all begs the question, what is a "Twitter bot"?
+   - Things to consider moving forward
 
 ---
 
@@ -93,27 +92,32 @@ background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/text
 
 Concerns about **automated accounts, or bots, on social media** manipulating public opinion reached a fever pitch during the 2016 general election. 
 
-The most alarming concerns were all related to behaviors of **Kremlin-linked bots** for:
+The most alarming concerns were related to behaviors of **Kremlin-linked bots** for:
 
 + pushing **fake news** stories
 
 + amplifying **social divisions**
 
-+ intesifying **partisan** conflict
++ misrepresenting **public opinion**
 
 ---
 
-# Research questions
+# Research question(s)
 
 How do we **identify bots on social media**?
 
 How can we do it in **real-time** so as to filter out inauthentic social media traffic?
 
 ---
+class: inverse, center, middle
 
 # Social media data
 
-**Reactions** to recent news about Cambridge Analytica
+---
+
+# Social media apps
+
+There's been a lot of talk about Cambridge Analytica abuse of social media data. **Reactions** can be summarized as follows:
 
 1. **Facebook was negligent** because it inadequately regulated third party apps
 
@@ -124,7 +128,6 @@ How can we do it in **real-time** so as to filter out inauthentic social media t
 In other words...people don't know exactly what FB and CA actually did, but they know it was wrong.
 
 ---
-
 
 # Social media APIs
 
@@ -138,25 +141,31 @@ Similar to web browsers but with different primary objective:
 For public APIs, many sites only allow access to **authorized** users
 + Twitter, Facebook, Instagram, Github, etc.
 
-
 ---
 
 # Twitter vs. Facebook
 
-For a case study about political bots on social media, Twitter is
+For a case study about political bots on social media, Twitter is better because...
 
-1. More open about its **data**
+1. It's more open about its **data**
    + Unlike Facebook, which actually clamped down on data sharing (with developers) starting in 2014, **Twitter is quite open with its data**
 
-1. More **public facing**
+1. It's more **public facing**
    + **Default privacy setting** is public
    + User **connections** are asymmetrical
+
+
+
+---
+class: inverse, center, middle
+
+# rtweet
 
 ---
 
 # Twitter APIs
 
-To connect to Twitter's APIs, users need a **consumer key** and **consumer secret**, which you can get by creating a Twitter app.
+To connect to Twitter APIs, users need a **consumer key** and **consumer secret**, which you can get by creating a Twitter app.
 
 View the built-in vignette **`auth`** for instructions on obtaining and storing user access tokens.&lt;sup&gt;\* &lt;/sup&gt;
 
@@ -173,13 +182,6 @@ Or look up the vignette online: [rtweet.info/articles/auth.html](http://rtweet.i
 ]
 
 ---
-class: inverse, center, middle
-
-
-# Obtaining and using Twitter API keys
-
----
-
 
 # Create a Twitter App
 
@@ -208,7 +210,6 @@ app_name &lt;- "mwk_twitter_app"
 ```
 
 ---
-
 
 # Copy API keys
 
@@ -242,7 +243,6 @@ token &lt;- create_token(app_name, consumer_key, consumer_secret)
 token
 ```
 
-
 ---
 
 # Storing your token
@@ -273,11 +273,6 @@ readRenviron("~/.Renviron")
 
 
 ---
-class: inverse, center, middle
-
-# Twitter data
-
----
 
 # Getting the data
 
@@ -300,18 +295,18 @@ class: inverse, center, middle
 
 # Current approaches
 
-The creators of [**botometer**]() maintain a list open sourced academic studies that identified bots.
+The creators of [**botometer**](https://botometer.iuni.iu.edu/#!/) maintain a list open sourced academic studies that identified bots.
 
 But this approach is not without **limitations**:
 + Academic research moves slowly (especially with Twitter banning many of the bots)
 + Relatively small number have been collected
-+ Labour intensive methods (human coding)
++ Labor intensive methods (human coding)
 
 ---
 
 # New approach
 
-One **solution** to these limitations is to combine the academic sources with an easy-to-automate method that takes advantage of naturally occcurring human coding
+One **solution** to these limitations is to combine the academic sources with an easy-to-automate method that takes advantage of naturally occurring human coding
 
 1. Select a handful of previously verified bots
 1. Look up the public **lists** that include those bots
@@ -391,6 +386,11 @@ Overall...
 + The **fast model** was correct 91.9% of the time.
 
 ---
+class: inverse, center, middle
+
+# botrnot
+
+---
 
 # Applications
 
@@ -399,7 +399,12 @@ Overall...
 + It has also been exported as a [Shiny web app](https://mikewk.shinyapps.io/botornot)
 
 ---
-c
+class: inverse, center, middle
+
+Future directions
+
+---
+
 # Future research
 
 Between the proliferation of news stories about Kremlin-linked bots on social media and the number of false positives reported to me about **botrnot**, I'm starting to think...
@@ -409,7 +414,7 @@ The real challenge is not **identifying** social media bots but instead **defini
 + Future research should examine how and why people define certain accounts as bots and others as not bots
 
 ---
-lass: inverse, center, middle
+class: inverse, center, middle
 
 # The end
     </textarea>
