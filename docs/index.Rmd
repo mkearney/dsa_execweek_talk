@@ -28,13 +28,21 @@ head <- function(x, n = 6) {
 }
 ```
 
+class: center, middle
+
+Presentation created using **{xaringan}** (the **robot** theme)
+
+Slides available at [https://mkearney.github.io/dsa_execweek_talk](https://mkearney.github.io/dsa_execweek_talk)
+
+---
+
 background-size: 150px auto
 background-position: 490px 185px, 567px 320px, 644px 185px, 721px 320px, 644px 455px, 567px 50px
 background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/textfeatures-logo.png), url(img/tfse-logo.png), url(img/botrnot-logo.png), url(img/rtweet-logo.svg)
 
 # About Me
 
-**Academic nackground**
+**Background**
 
 - PhD in COMS from Kansas
 
@@ -72,14 +80,17 @@ background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/text
 
 ---
 
-# Background
+# 2016 election
 
-One major explanation is Russian interference
+Concerns about bots on social media manipulating public opinion spiked during the 2016 general election. 
 
-+ Russian bots on social media manipulated public opinion, pushed fake news stories, and amplified social divisions
-+ FB/Twitter banned a bunch of accounts
-+ Link to the dashboard site
-+ Cite academic research
+The most alarming concerns were all related to behaviors of Kremlin-linked bot accounts for:
+
++ pushing fake news stories
+
++ amplifying social divisions
+
++ intesifying partisan disagreements
 
 ---
 
@@ -125,12 +136,12 @@ For public APIs, many sites only allow access to **authorized** users
 
 For a case study about political bots on social media, Twitter is
 
-More open about its **data**
-+ Unlike Facebook, which actually clamped down on data sharing (with developers) starting in 2014, **Twitter is quite open with its data**
+1. More open about its **data**
+   + Unlike Facebook, which actually clamped down on data sharing (with developers) starting in 2014, **Twitter is quite open with its data**
 
-More **public facing**
-+ **Default privacy setting** is public
-+ User **connections** are asymmetrical
+1. More **public facing**
+   + **Default privacy setting** is public
+   + User **connections** are asymmetrical
 
 ---
 
@@ -265,8 +276,13 @@ ts_plot(cnn, "hours")
 <span style="margin-left:1%"><img src="img/cnn.png" width="90%" height="auto" /></span>
 
 ---
+class: inverse, center, middle
 
 # Identifying bots
+
+---
+
+# Current approaches
 
 The creators of [**botometer**]() maintain a list open sourced academic studies that identified bots.
 
@@ -277,7 +293,7 @@ But this approach is not without **limitations**:
 
 ---
 
-# Identifying bots
+# New approach
 
 One **solution** to these limitations is to combine the academic sources with an easy-to-automate method that takes advantage of naturally occcurring human coding
 
@@ -286,14 +302,21 @@ One **solution** to these limitations is to combine the academic sources with an
 1. Identify lists **names** that self identify as bot lists
 
 ---
+class: inverse, center, middle
+
+# Compiling data sets
+
+---
 
 # User/tweet data
 
-Using the list of non-bot (based on previous academic research and human coding) and bot screen names, get...
+Using the list of screen names for non-bot (based on previous academic research and human coding) and bot accounts, I gathered...
 
-+ tweet-level data for the most recent 100 tweets posted by each user `rtweet::get_timelines()`
++ **tweet-level data** for the most recent 100 tweets posted by each user `rtweet::get_timelines()`
 
-+ user-level (or account-level) data for each user `rtweet::lookup_users()`
++ **user-level (or account-level) data** for each user `rtweet::lookup_users()`
+
+The data returned by Twitter consists of over 60 features related to the tweet and author (user) of each tweet.
 
 ---
 
@@ -319,6 +342,45 @@ The text features were extracted for:
 + Screen name
 + Location
 + Description (bio)
+
+---
+class: inverse, center, middle
+
+# Modeling
+
+---
+
+# Two models
+
+Two models were created. 
+
+1. The **default model**, which uses both users and tweets data.
+
+1. The **fast model**, which uses only users data
+
+---
+
+# Model results
+
+A gradient boosted logistic model **{gbm::gbm()}** was trained and tested on the two data sets for both the default and fast models.
+
++ The **default model** was 93.53% accurate when classifying bots and 95.32% accurate when classifying non-bots
+
++ The **fast model** was 91.78% accurate when classifying bots and 92.61% accurate when classifying non-bots
+
+Overall...
+
++ The **default model** was correct 93.8% of the time
+
++ The **fast model** was correct 91.9% of the time.
+
+---
+
+# Applications
+
++ This has since been assembled into an R package [**{botrnot}**](https://github.com/mkearney/botrnot)---coming soon to CRAN!
+
++ It has also been exported as a [Shiny web app](https://mikewk.shinyapps.io/botornot)
 
 ---
 class: inverse, center, middle
