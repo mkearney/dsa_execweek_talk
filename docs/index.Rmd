@@ -350,8 +350,10 @@ class: inverse, center, middle
 Two models were created. 
 
 1. The **default model**, which uses both users and tweets data.
-
+   - Rate limited by Twitter to 180 every 15 minutes
+   
 1. The **fast model**, which uses only users data
+   - Rate limited by Twitter to 90,000 every 15 minutes
 
 ---
 
