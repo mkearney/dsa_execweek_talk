@@ -76,14 +76,14 @@ background-image: url(img/chr-logo.png), url(img/hexagon-logo.png), url(img/text
 ---
 
 # Overview
-+ Background on the problem and the research question
++ The **problem** and the **research question**
    - Use of bots on social media to manipulate public opinions, amplify social divisions, and spread "fake news"
-   - How do we accurately and dynamically classify bots on social media?
+   - **How do we accurately and dynamically classify bots on social media?**
 
-+ Proposed solution
++ Proposed **solution**
    - A new, fast, and flexible approach to training models to detect social media bots
 
-+ Future directions
++ **Future** directions
    - Things to consider moving forward
 
 ---
@@ -104,9 +104,9 @@ The most alarming concerns were related to behaviors of **Kremlin-linked bots** 
 
 # Research question(s)
 
-How do we **identify bots on social media**?
+## How do we **identify bots on social media**?
 
-How can we do it in **real-time** so as to filter out inauthentic social media traffic?
+## How can we do it in **real-time** so as to filter out inauthentic social media traffic?
 
 ---
 class: inverse, center, middle
@@ -117,7 +117,7 @@ class: inverse, center, middle
 
 # Social media apps
 
-There's been a lot of talk about Cambridge Analytica abuse of social media data. **Reactions** can be summarized as follows:
+There's been a lot of talk about Cambridge Analytica's abuse of social media data. **Reactions** can be summarized as follows:
 
 1. **Facebook was negligent** because it inadequately regulated third party apps
 
@@ -276,7 +276,7 @@ readRenviron("~/.Renviron")
 
 # Getting the data
 
-Functions in **{rtweet}** correspond with different [API] paths. For example, use `rtweet::get_timeline()` to return up to the most recent 3,2000 tweets posted by a given user.
+**{rtweet}** functions correspond to different [API] paths. For example, user timelines:
 
 
 ```r
@@ -293,7 +293,7 @@ class: inverse, center, middle
 
 ---
 
-# Current approaches
+# Current approach
 
 The creators of [**botometer**](https://botometer.iuni.iu.edu/#!/) maintain a list open sourced academic studies that identified bots.
 
@@ -308,9 +308,10 @@ But this approach is not without **limitations**:
 
 One **solution** to these limitations is to combine the academic sources with an easy-to-automate method that takes advantage of naturally occurring human coding
 
-1. Select a handful of previously verified bots
+1. Select a handful of previously **verified** bots
 1. Look up the public **lists** that include those bots
-1. Identify lists **names** that self identify as bot lists
+1. Identify list **names** that self identify as bot lists
+   - Perform validity checks on other listed accounts
 
 ---
 class: inverse, center, middle
