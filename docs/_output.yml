@@ -1,6 +1,6 @@
 xaringan::moon_reader:
   css: ['robot', 'robot-fonts', 'mizzou.css']
-  self_contained: false
+  self_contained: true
   nature:
     highlightStyle: github
     highlightLines: true
